@@ -1163,252 +1163,434 @@ a {
   }
 }
 
-/* RESPONSIVE MOBILE KU OPTIMIZATION SMARTPHONES & TABLETS*/
-
+/* =========================================================
+   EXACT REPLIT MOBILE SPECIFICATION (max-width: 768px)
+   ========================================================= */
 @media (max-width: 768px) {
-  /* Fix Container Spacing & Typography */
+  /* Container & Base Typography */
   .container {
-    padding: 0 1.25rem;
-  }
-
-  .editorial-heading {
-    font-size: clamp(2.4rem, 10vw, 3.4rem);
-    line-height: 1.05;
+    padding: 0 1.25rem 0 1.25rem;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
   .content-section {
-    padding: 70px 0;
+    padding: 60px 0;
   }
 
-  /* Hide Desktop-only Fixed Elements */
-  .chapter-spine,
-  .hud-radar-badge,
-  .spiral-spinner,
-  .planet-sphere-stage {
-    display: none !important;
+  .editorial-heading {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
   }
 
-  /* Navigation Bar */
+  /* Fixed Navigation Bar with Mobile Hamburger */
+  .navbar {
+    height: 64px;
+    padding: 0 1.25rem;
+  }
+
   .nav-inner {
-    height: 60px;
+    height: 64px;
+    padding: 0;
   }
 
-  .nav-links {
+  .nav-links,
+  .navbar .btn-ghost {
     display: none;
   }
 
-  /* Video Interstitials on Mobile */
+  .mobile-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 1200;
+  }
+
+  .mobile-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+
+  /* Right Vertical Chapter Spine - Kept Active & Scaled */
+  .chapter-spine {
+    right: 0.75rem;
+    gap: 1.5rem;
+    z-index: 999;
+  }
+
+  .spine-dot {
+    position: relative;
+    width: 4px;
+    height: 4px;
+  }
+
+  .spine-dot::before {
+    content: attr(data-chapter);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    color: var(--text-dim);
+    opacity: 0.6;
+  }
+
+  .spine-dot.active {
+    width: 8px;
+    height: 8px;
+    box-shadow: 0 0 12px var(--amber-bright);
+  }
+
+  /* Centered Letterbox Chapter Interstitials */
   .video-interstitial {
-    height: 100svh; /* Dynamic viewport height prevents address-bar jump */
-    padding: 90px 1.25rem 40px 1.25rem;
+    height: 100svh;
+    padding: 80px 1.25rem 40px 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .video-interstitial .content-layer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Centered Video Card Container */
+  .mobile-interstitial-card {
+    position: relative;
+    width: 100%;
+    max-height: 260px;
+    aspect-ratio: 16 / 9;
+    margin: auto 0;
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-interstitial-card video,
+  .mobile-interstitial-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .interstitial-card-text {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .interstitial-card-text .card-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    margin-bottom: 0.35rem;
+  }
+
+  .interstitial-card-text .card-title {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    color: var(--text);
+  }
+
+  .hud-radar-badge {
+    top: 75px;
+    right: 1.25rem;
+    width: 85px;
+    height: 85px;
+    font-size: 0.55rem;
+  }
+
+  .hud-radar-badge::before {
+    width: 105px;
+    height: 105px;
   }
 
   .giant-watermark-num {
-    font-size: clamp(6rem, 24vw, 9rem);
+    display: none;
   }
 
   /* Hero Section */
   .hero-section {
-    padding: 100px 0 60px 0;
+    padding: 85px 0 50px 0;
     min-height: auto;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.2rem;
   }
 
   .hero-desc {
-    font-size: 1rem;
-    margin: 1.5rem 0 2rem 0;
+    font-size: 0.98rem;
+    margin: 1.25rem 0 1.8rem 0;
+    line-height: 1.65;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .btn-amber,
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
   }
 
   .hero-portrait-frame img {
     height: 380px;
+    object-position: center 20%;
   }
 
-  /* Ticker Band */
   .ticker-band {
-    flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
-    font-size: 0.62rem;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 1rem;
+    font-size: 0.65rem;
+    text-align: left;
+    padding: 1.25rem 0;
   }
 
   /* Section 02 / Creative Identity */
   #about .container {
     grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    gap: 2rem !important;
   }
 
   .quote-block {
     padding-left: 1.25rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
-  /* Section 03 / Planetary Orbit (Responsive Flex Flow on Mobile) */
+  .quote-block h4 {
+    font-size: 1.05rem;
+  }
+
+  /* Section 03 / The Toolkit (Mobile Vector Circle) */
   .planetary-orbit-system {
-    height: auto;
-    min-height: 380px;
+    width: 100%;
+    height: 360px;
     margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 2rem 0;
   }
 
-  .planetary-orbit-system .orbit-path,
-  .planetary-orbit-system .sun-core-node {
-    display: none; /* Strip overlapping fixed circles on small screens */
-  }
+  .orbit-path.path-outer { width: 320px; height: 320px; }
+  .orbit-path.path-mid { width: 240px; height: 240px; }
+  .orbit-path.path-inner { width: 160px; height: 160px; }
 
   .orbiting-planet-tag {
-    position: static !important;
-    font-size: 1.2rem;
-    background: rgba(26, 19, 14, 0.85);
-    border: 1px solid var(--border);
-    padding: 0.5rem 0.9rem;
-    border-radius: 4px;
+    font-size: 1.05rem;
+    padding: 0.15rem 0.4rem;
   }
 
-  /* Section 04 / Vinyl Disc & Skill Orbs */
+  .planet-1 { top: 12%; left: 36%; }
+  .planet-2 { top: 28%; left: 4%; }
+  .planet-3 { top: 40%; right: 4%; }
+  .planet-4 { bottom: 26%; left: 14%; }
+  .planet-5 { bottom: 12%; right: 18%; }
+  .planet-6 { bottom: 4%; left: 38%; }
+
+  /* Section 04 / Creative Universe Vinyl Center */
   .universe-stage {
-    height: auto;
-    max-width: 100%;
+    width: 100%;
+    height: 440px;
     margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
   }
 
-  .universe-orbit-ring {
-    display: none; /* Remove large absolute dashed rings causing mobile overflow */
-  }
+  .ring-outer { width: 340px; height: 340px; }
+  .ring-inner { width: 250px; height: 250px; }
 
   .vinyl-disc-hub {
-    width: 210px;
-    height: 210px;
+    width: 180px;
+    height: 180px;
   }
 
   .vinyl-spindle-hole {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
-  /* Transform floating coordinates into a clean mobile orbit grid */
   .skill-circle-node {
-    position: static !important;
-    animation: none !important;
-    transform: none !important;
-    width: 72px;
-    height: 72px;
+    width: 58px;
+    height: 58px;
+    padding: 0.25rem;
   }
 
   .skill-circle-node .node-title {
-    font-size: 0.52rem;
+    font-size: 0.46rem;
+    line-height: 1.15;
   }
 
-  /* Wrap skill nodes around the disc on mobile */
-  .universe-stage::after {
-    display: none;
-  }
+  .orb-1 { top: 2%; left: 40%; }
+  .orb-2 { top: 14%; right: 8%; }
+  .orb-3 { top: 40%; right: 2%; }
+  .orb-4 { bottom: 16%; right: 6%; }
+  .orb-5 { bottom: 2%; left: 40%; }
+  .orb-6 { bottom: 16%; left: 6%; }
+  .orb-7 { top: 40%; left: 2%; }
+  .orb-8 { top: 14%; left: 8%; }
 
-  .universe-stage .skill-circle-node {
-    display: inline-flex;
-    margin: 0.35rem;
-  }
-
-  /* Section 05 / Selected Work Rows */
+  /* Section 05 / Selected Work Mobile Rows */
   .work-item-row {
-    grid-template-columns: 35px 1fr 40px;
-    padding: 1.5rem 0.5rem;
-    gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 0;
+    gap: 0.85rem;
+  }
+
+  .row-index {
+    font-size: 0.65rem;
+    color: var(--amber);
   }
 
   .row-title {
-    font-size: 1.5rem;
+    font-size: 1.85rem;
+    line-height: 1.1;
   }
 
   .row-meta {
-    display: none; /* Hide dense metadata column on compact view */
+    font-size: 0.62rem;
+    line-height: 1.5;
   }
 
   .row-preview-thumb {
-    width: 44px;
-    height: 44px;
-    border-radius: 4px;
+    width: 100%;
+    height: 190px;
+    margin-left: 0;
+    margin-top: 0.5rem;
+    border-radius: 2px;
   }
 
-  /* Section 06 / Gallery Cards */
+  /* Section 06 / In the Frame Gallery Carousel */
   .gallery-viewport {
-    gap: 1.2rem;
-    padding: 1.5rem 0.5rem;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
   }
 
   .gallery-frame-card {
     min-width: 82vw;
-    height: 420px;
-    transform: none !important; /* Reset crooked angles on mobile for smooth touch scrolling */
+    height: 440px;
+    transform: none !important;
   }
 
-  /* Section 07 / Timeline */
+  /* Section 07 / Vertical Milestone Timeline Rail */
   .timeline-strip-wrapper {
-    padding: 2rem 0;
-  }
-
-  .timeline-grid {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
+    padding: 2rem 0 1rem 0;
+    margin-top: 2rem;
+    border-bottom: none;
   }
 
   .timeline-beam-track {
     display: none;
   }
 
-  .point-title {
-    font-size: 1.25rem;
+  .timeline-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    position: relative;
+    padding-left: 1.75rem;
   }
 
-  /* Section 08 / Tool Rack */
+  /* Vertical Rail Line */
+  .timeline-grid::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: rgba(245, 225, 205, 0.15);
+  }
+
+  .timeline-point {
+    position: relative;
+  }
+
+  .timeline-point .point-dot {
+    position: absolute;
+    left: -1.75rem;
+    top: 4px;
+    width: 9px;
+    height: 9px;
+    margin-bottom: 0;
+  }
+
+  .point-year {
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .point-title {
+    font-size: 1.3rem;
+  }
+
+  /* Academic Sub-strip */
+  .timeline-strip-wrapper + div {
+    flex-direction: column !important;
+    gap: 0.65rem;
+    font-size: 0.64rem !important;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Section 08 / On the Desk 2x2 Tool Grid */
   .tools-rack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
+    margin-top: 2rem;
   }
 
   .tool-tile {
-    padding: 0.75rem 1.25rem;
+    padding: 0.85rem 1rem;
     font-size: 0.68rem;
   }
 
-  /* Section 09 / Footer & CTA */
-  .btn-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.85rem;
-  }
-
-  .btn-amber, .btn-ghost {
-    justify-content: center;
-    width: 100%;
+  /* Section 09 / Final Frame & Footer */
+  .planet-sphere-stage {
+    display: none;
   }
 
   .giant-footer-brand {
-    font-size: clamp(3.5rem, 16vw, 5.5rem);
+    font-size: clamp(3.2rem, 16vw, 5.5rem);
     margin: 3.5rem 0 1.5rem 0;
   }
 
   footer .container > div:last-child {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.85rem;
     text-align: center;
   }
 
-  /* Floating Audio Controller */
+  /* Audio Dock on Mobile */
   .audio-dock {
     bottom: 1.25rem;
     right: 1.25rem;
